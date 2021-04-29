@@ -180,24 +180,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public ComListinpathBody Body { get; set; } = new();
+        public ComListinpathBody Body { get; set; } = new ComListinpathBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class ComListinpathBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public ComListinpathData Data { get; set; } = new();
+        public ComListinpathData Data { get; set; } = new ComListinpathData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class ComListinpathData
     {
         [XmlElement(ElementName = "COLLECTION")]
-        public ComListinpathColl Collection { get; set; } = new();
+        public ComListinpathColl Collection { get; set; } = new ComListinpathColl();
     }
 
     [XmlRoot(ElementName = "COLLECTION")]

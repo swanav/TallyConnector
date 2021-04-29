@@ -5,13 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{B589AA71-E24F-4881-81DB-747214664225}</ProjectGuid>
     <OutputType>Library</OutputType>
-<<<<<<< HEAD
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TallyConnector</RootNamespace>
     <AssemblyName>TallyConnector</AssemblyName>
-    <Authors>Sai Vineeth</Authors>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/Accounting-Companion/TallyConnector.git</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Accounting-Companion/TallyConnector</PackageProjectUrl>
-    <Description />
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <RegisterForComInterop>true</RegisterForComInterop>
