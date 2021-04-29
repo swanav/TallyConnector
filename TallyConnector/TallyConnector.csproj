@@ -1,8 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B589AA71-E24F-4881-81DB-747214664225}</ProjectGuid>
     <OutputType>Library</OutputType>
+<<<<<<< HEAD
     <AssemblyName>TallyConnector</AssemblyName>
     <Authors>Sai Vineeth</Authors>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -10,10 +13,42 @@
     <PackageProjectUrl>https://github.com/Accounting-Companion/TallyConnector</PackageProjectUrl>
     <Description />
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DocumentationFile></DocumentationFile>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\CostCategory.cs" />
+    <Compile Include="Models\CostCenter.cs" />
+    <Compile Include="Models\Currencies.cs" />
+    <Compile Include="Models\CusCollection.cs" />
+    <Compile Include="Models\Envelope.cs" />
+    <Compile Include="Models\Godown.cs" />
+    <Compile Include="Models\Group.cs" />
+    <Compile Include="Models\Ledger.cs" />
+    <Compile Include="Models\Names.cs" />
+    <Compile Include="Models\ObjEnv.cs" />
+    <Compile Include="Models\StockCategory.cs" />
+    <Compile Include="Models\StockGroup.cs" />
+    <Compile Include="Models\StockItem.cs" />
+    <Compile Include="Models\TallyList.cs" />
+    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Models\VoucherType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tally.cs" />
+    <Compile Include="TallyXmlJson.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
