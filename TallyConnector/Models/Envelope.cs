@@ -59,7 +59,7 @@ namespace TallyConnector.Models
 	public class Description
 	{
 		[XmlElement(ElementName = "STATICVARIABLES")]
-		public StaticVariables StaticVariables { get; set; } = new();
+		public StaticVariables StaticVariables { get; set; } = new StaticVariables();
 
 	}
 
@@ -80,13 +80,13 @@ namespace TallyConnector.Models
 		public string SVCompany { get; set; }
 
 		[XmlIgnore]
-		public string SVFromDate { get { return SVFrom.Text; } set {SVFrom = new(); SVFrom.Text = value; } }
+		public string SVFromDate { get { return SVFrom.Text; } set {SVFrom = new SVFrom(); SVFrom.Text = value; } }
 
 		[XmlElement(ElementName = "SVFROMDATE")]
 		public SVFrom SVFrom { get; set; }
 
 		[XmlIgnore]
-		public string SVToDate { get { return SVTo.Text; } set { SVTo = new(); SVTo.Text = value; } }
+		public string SVToDate { get { return SVTo.Text; } set { SVTo = new SVTo(); SVTo.Text = value; } }
 
 		[XmlElement(ElementName = "SVTODATE")]
 		public SVTo SVTo { get; set; }

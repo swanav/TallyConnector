@@ -11,7 +11,7 @@ namespace TallyConnector.Models
     {
         public Voucher()
         {
-            _DeliveryNotes = new();
+            _DeliveryNotes = new DeliveryNotes();
         }
 
         [XmlAttribute(AttributeName = "ID")]
@@ -345,7 +345,7 @@ namespace TallyConnector.Models
     {
         public BillAllocations()
         {
-            _BillCP = new();
+            _BillCP = new BillCP();
         }
 
         [XmlElement(ElementName = "BILLTYPE")]

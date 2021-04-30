@@ -18,7 +18,7 @@ namespace TallyConnector.Models
         public ObjHeader Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public ObjBody Body { get; set; } = new();
+        public ObjBody Body { get; set; } = new ObjBody();
 
     }
 
@@ -49,7 +49,7 @@ namespace TallyConnector.Models
         public string SubType { get; set; }
 
         [XmlElement(ElementName = "ID")]
-        public ID ID { get; set; } = new();
+        public ID ID { get; set; } = new ID();
 
         
     }
@@ -68,7 +68,7 @@ namespace TallyConnector.Models
     public class ObjBody
     {
         [XmlElement(ElementName = "DESC")]
-        public ObjDescription Desc { get; set; } = new();
+        public ObjDescription Desc { get; set; } = new ObjDescription();
 
     }
 
@@ -76,7 +76,7 @@ namespace TallyConnector.Models
     public class ObjDescription
     {
         [XmlElement(ElementName = "STATICVARIABLES")]
-        public StaticVariables StaticVariables { get; set; } = new();
+        public StaticVariables StaticVariables { get; set; } = new StaticVariables();
 
         [XmlElement(ElementName = "FETCHLIST")]
         public FetchList FetchList { get; set; }
@@ -95,6 +95,6 @@ namespace TallyConnector.Models
             LFetch = FList;
         }
         [XmlElement(ElementName = "FETCH")]
-        public List<string> LFetch { get; set; } = new();
+        public List<string> LFetch { get; set; } = new List<string>();
     }
 }

@@ -79,24 +79,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public VTBody Body { get; set; } = new();
+        public VTBody Body { get; set; } = new VTBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class VTBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public VTData Data { get; set; } = new ();
+        public VTData Data { get; set; } = new VTData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class VTData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public VoucherTypeMessage Message { get; set; } = new ();
+        public VoucherTypeMessage Message { get; set; } = new VoucherTypeMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]

@@ -18,14 +18,14 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public ColBody Body { get; set; } = new();
+        public ColBody Body { get; set; } = new ColBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class ColBody
     {
         [XmlElement(ElementName = "DESC")]
-        public ColDescription Desc { get; set; } = new();
+        public ColDescription Desc { get; set; } = new ColDescription();
 
         //[XmlElement(ElementName = "DATA")]
         //public LData Data { get; set; } = new LData();
@@ -36,10 +36,10 @@ namespace TallyConnector.Models
     {
 
         [XmlElement(ElementName = "STATICVARIABLES")]
-        public StaticVariables StaticVariables { get; set; } = new();
+        public StaticVariables StaticVariables { get; set; } = new StaticVariables();
 
         [XmlElement(ElementName = "TDL")]
-        public ColTDL TDL { get; set; } = new();
+        public ColTDL TDL { get; set; } = new ColTDL();
     }
 
     [XmlRoot(ElementName = "TDL")]
@@ -47,7 +47,7 @@ namespace TallyConnector.Models
     {
 
         [XmlElement(ElementName = "TDLMESSAGE")]
-        public ColTDLMessage TDLMessage { get; set; } = new();
+        public ColTDLMessage TDLMessage { get; set; } = new ColTDLMessage();
     }
 
     [XmlRoot(ElementName = "TDLMESSAGE")]
@@ -58,29 +58,29 @@ namespace TallyConnector.Models
             Dictionary<string, string> rightFields, string colType,
             List<string> filters = null, List<string> SysFormulae = null)
         {
-            Report = new(rName, fName);
-            Form = new(fName,topPartName,rootXML);
-            Part = new(topPartName,colName, lineName);
+            Report = new Report(rName, fName);
+            Form = new Form(fName,topPartName,rootXML);
+            Part = new Part(topPartName,colName, lineName);
             List<string> LF = leftFields.Values.ToList();
             List<string> RF = rightFields.Values.ToList();
-            Line = new(lineName,LF,RF);
-            Field = new();
+            Line = new Line(lineName,LF,RF);
+            Field = new List<Field>();
             foreach (var Fld in leftFields)
             {
-                Field field = new(Fld.Key,Fld.Value);
+                Field field = new Models.Field(Fld.Key,Fld.Value);
                 Field.Add(field);
             }
             foreach (var Fld in rightFields)
             {
-                Field field = new(Fld.Key, Fld.Value);
+                Field field = new Models.Field(Fld.Key, Fld.Value);
                 Field.Add(field);
             }
-            Collection = new(colName: colName, colType: colType, filters: filters);
+            Collection = new Collection(colName: colName, colType: colType, filters: filters);
             if (filters != null && SysFormulae != null)
             {
                 for (int i = 0; i < SysFormulae.Count; i++)
                 {
-                    System NSystem = new(filters[i], SysFormulae[i]);
+                    System NSystem = new Models.System(filters[i], SysFormulae[i]);
                     System.Add(NSystem);
                 }
             }
@@ -90,12 +90,12 @@ namespace TallyConnector.Models
         public ColTDLMessage(string colName, string colType, List<string> nativeFields,
             List<string> filters = null, List<string> SysFormulae = null)
         {
-            Collection = new(colName: colName, colType: colType, nativeFields: nativeFields, filters: filters);
+            Collection = new Collection(colName: colName, colType: colType, nativeFields: nativeFields, filters: filters);
             if (filters != null && SysFormulae != null)
             {
                 for (int i = 0; i < SysFormulae.Count; i++)
                 {
-                    System NSystem = new(filters[i], SysFormulae[i]);
+                    System NSystem = new System(filters[i], SysFormulae[i]);
                     System.Add(NSystem);
                 }
             }
@@ -124,7 +124,7 @@ namespace TallyConnector.Models
         public Collection Collection { get; set; }
 
         [XmlElement(ElementName = "SYSTEM")]
-        public List<System> System { get; set; } = new();
+        public List<System> System { get; set; } = new List<System>();
 
     }
 
