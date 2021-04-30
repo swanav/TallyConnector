@@ -14,7 +14,7 @@ namespace TallyConnector.Models
 	{
 		public LanguageNameList()
         {
-			NameList = new();
+			NameList = new Names();
 
 		}
 
@@ -30,7 +30,7 @@ namespace TallyConnector.Models
 	{
 		public Names()
         {
-			NAMES = new();
+			NAMES = new List<string>();
         }
 
 		[XmlElement(ElementName = "NAME")]

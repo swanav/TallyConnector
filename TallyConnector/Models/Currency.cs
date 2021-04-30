@@ -83,24 +83,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public CrncyBody Body { get; set; } = new();
+        public CrncyBody Body { get; set; } = new CrncyBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class CrncyBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public CrncyData Data { get; set; } = new();
+        public CrncyData Data { get; set; } = new CrncyData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class CrncyData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public CrncyMessage Message { get; set; } = new();
+        public CrncyMessage Message { get; set; } = new CrncyMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]

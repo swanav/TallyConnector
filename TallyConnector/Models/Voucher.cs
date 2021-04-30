@@ -12,8 +12,8 @@ namespace TallyConnector.Models
     {
         public Voucher()
         {
-            _DeliveryNotes = new();
-            Ledgers = new();
+            _DeliveryNotes = new DeliveryNotes();
+            Ledgers = new List<IVoucherLedger>();
         }
 
         [XmlElement(ElementName = "MASTERID")]
@@ -284,9 +284,9 @@ namespace TallyConnector.Models
 
         public IVoucherLedger()
         {
-            BillAllocations = new();
-            InventoryAllocations = new();
-            CostCategoryAllocations = new();
+            BillAllocations = new List<BillAllocations>();
+            InventoryAllocations = new List<InventoryAllocations>();
+            CostCategoryAllocations = new List<CostCategoryAllocations>();
         }
 
 
@@ -370,7 +370,7 @@ namespace TallyConnector.Models
     {
         public BillAllocations()
         {
-            _BillCP = new();
+            _BillCP = new BillCP();
         }
 
         [XmlElement(ElementName = "BILLTYPE")]
@@ -461,8 +461,8 @@ namespace TallyConnector.Models
     {
         public InventoryAllocations()
         {
-            BatchAllocations = new();
-            CostCategoryAllocations = new();
+            BatchAllocations = new List<BatchAllocations>();
+            CostCategoryAllocations = new List<CostCategoryAllocations>();
         }
 
 
@@ -591,7 +591,7 @@ namespace TallyConnector.Models
     {
         public CostCategoryAllocations()
         {
-            CostCenterAllocations = new();
+            CostCenterAllocations = new List<CostCenterAllocations>();
         }
 
         [XmlElement(ElementName = "CATEGORY")]

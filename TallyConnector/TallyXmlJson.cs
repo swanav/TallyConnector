@@ -19,7 +19,7 @@ namespace TallyConnector
         public string GetXML()
         {
             TextWriter textWriter = new StringWriter();
-            XmlWriterSettings settings = new()
+            XmlWriterSettings settings = new XmlWriterSettings()
             {
                 OmitXmlDeclaration = true,
                 NewLineChars= "&#13;&#10;", //If /r/n in Xml replace
@@ -28,9 +28,9 @@ namespace TallyConnector
                 CheckCharacters = false,
 
             };
-            XmlSerializerNamespaces ns = new(
+            XmlSerializerNamespaces ns = new XmlSerializerNamespaces(
                          new[] { XmlQualifiedName.Empty });
-            XmlSerializer xmlSerializer = new(this.GetType());
+            XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
             var writer = XmlWriter.Create(textWriter, settings);
             xmlSerializer.Serialize(writer, this, ns);
             return textWriter.ToString(); ;

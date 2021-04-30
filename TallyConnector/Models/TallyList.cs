@@ -15,14 +15,14 @@ namespace TallyConnector.Models
     public class GroupsList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> GroupNames { get; set; } = new();
+        public List<string> GroupNames { get; set; } = new List<string>();
 
     }
     [XmlRoot(ElementName = "LISTOFLEDGERS")]
     public class LedgersList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> LedgerNames { get; set; } = new();
+        public List<string> LedgerNames { get; set; } = new List<string>();
 
     }
 
@@ -30,7 +30,7 @@ namespace TallyConnector.Models
     public class CostCategoriesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> CostCategories { get; set; } = new();
+        public List<string> CostCategories { get; set; } = new List<string>();
 
     }
 
@@ -39,7 +39,7 @@ namespace TallyConnector.Models
     public class CostCentersList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> CostCenters { get; set; } = new();
+        public List<string> CostCenters { get; set; } = new List<string>();
 
     }
 
@@ -47,7 +47,7 @@ namespace TallyConnector.Models
     public class StockGroupsList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> StockGroups { get; set; } = new();
+        public List<string> StockGroups { get; set; } = new List<string>();
 
     }
 
@@ -55,14 +55,14 @@ namespace TallyConnector.Models
     public class StockCategoriesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> StockCategories { get; set; } = new();
+        public List<string> StockCategories { get; set; } = new List<string>();
 
     }
     [XmlRoot(ElementName = "LISTOFSTOCKITEMS")]
     public class StockItemsList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> StockItems { get; set; } = new();
+        public List<string> StockItems { get; set; } = new List<string>();
 
     }
 
@@ -70,7 +70,7 @@ namespace TallyConnector.Models
     public class GodownsList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> Godowns { get; set; } = new();
+        public List<string> Godowns { get; set; } = new List<string>();
 
     }
 
@@ -78,7 +78,7 @@ namespace TallyConnector.Models
     public class VoucherTypesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> VoucherTypes { get; set; } = new();
+        public List<string> VoucherTypes { get; set; } = new List<string>();
 
     }
 
@@ -86,7 +86,7 @@ namespace TallyConnector.Models
     public class UnitsList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> Units { get; set; } = new();
+        public List<string> Units { get; set; } = new List<string>();
 
     }
 
@@ -94,7 +94,7 @@ namespace TallyConnector.Models
     public class CurrenciesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> Currencies { get; set; } = new();
+        public List<string> Currencies { get; set; } = new List<string>();
 
     }
 
@@ -102,7 +102,7 @@ namespace TallyConnector.Models
     public class AttendanceTypesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> AttendanceTypes { get; set; } = new();
+        public List<string> AttendanceTypes { get; set; } = new List<string>();
 
     }
 
@@ -110,7 +110,7 @@ namespace TallyConnector.Models
     public class EmployeeGroupList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> EmployeeGroups { get; set; } = new();
+        public List<string> EmployeeGroups { get; set; } = new List<string>();
 
     }
 
@@ -118,7 +118,7 @@ namespace TallyConnector.Models
     public class EmployeesList
     {
         [XmlElement(ElementName = "NAME")]
-        public List<string> Employees { get; set; } = new();
+        public List<string> Employees { get; set; } = new List<string>();
 
     }
 
@@ -145,24 +145,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public ComListBody Body { get; set; } = new();
+        public ComListBody Body { get; set; } = new ComListBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class ComListBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public ComListData Data { get; set; } = new();
+        public ComListData Data { get; set; } = new ComListData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class ComListData
     {
         [XmlElement(ElementName = "COLLECTION")]
-        public ComListColl Collection { get; set; } = new();
+        public ComListColl Collection { get; set; } = new ComListColl();
     }
 
     [XmlRoot(ElementName = "COLLECTION")]

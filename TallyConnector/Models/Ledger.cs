@@ -14,7 +14,7 @@ namespace TallyConnector.Models
         public Ledger()
         {
             FAddress = new HAddress();
-            InterestList = new();
+            InterestList = new InterestList();
         }
 
         [XmlElement(ElementName = "MASTERID")]
@@ -65,7 +65,7 @@ namespace TallyConnector.Models
             }
             set
             {
-                this.LanguageNameList = new();
+                this.LanguageNameList = new LanguageNameList();
                
                 if (value!=null)
                 {
@@ -219,12 +219,8 @@ namespace TallyConnector.Models
 
             set
             {
-                if (value !="")
-                {
-                    
-                    this.FAddress.FullAddress = value;
-                }
-                
+                this.FAddress = new HAddress();
+                this.FAddress.FullAddress = value;
 
             }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -9,8 +10,11 @@ using System.Xml.Serialization;
 using TallyConnector.Models;
 namespace TallyConnector
 {
+    [ComVisible(true)]
+    [ClassInterface(ClassInterfaceType.AutoDual)]
     public class Tally : IDisposable
     {
+
         static readonly HttpClient client = new HttpClient();
         private int Port;
         private string BaseURL;

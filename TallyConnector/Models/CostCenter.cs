@@ -68,7 +68,7 @@ namespace TallyConnector.Models
             }
             set
             {
-                this.LanguageNameList = new();
+                this.LanguageNameList = new LanguageNameList();
                 
                 if (value != null)
                 {
@@ -109,24 +109,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public CCentBody Body { get; set; } = new();
+        public CCentBody Body { get; set; } = new CCentBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class CCentBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public CCentData Data { get; set; } = new();
+        public CCentData Data { get; set; } = new CCentData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class CCentData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public CCentMessage Message { get; set; } = new();
+        public CCentMessage Message { get; set; } = new CCentMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]

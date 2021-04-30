@@ -55,24 +55,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public UnitBody Body { get; set; } = new();
+        public UnitBody Body { get; set; } = new UnitBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class UnitBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public UnitData Data { get; set; } = new();
+        public UnitData Data { get; set; } = new UnitData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class UnitData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public UnitMessage Message { get; set; } = new();
+        public UnitMessage Message { get; set; } = new UnitMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]
