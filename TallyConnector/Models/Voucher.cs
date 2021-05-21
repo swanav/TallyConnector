@@ -313,20 +313,13 @@ namespace TallyConnector.Models
             }
             set
             {
-                if (value != null)
+                if (value.ToString().Contains("="))
                 {
-                    if (value.ToString().Contains("="))
-                    {
-                        var s = value.ToString().Split('=');
-                        var k = s[0].Split('@');
-                        ForexAmount = k[0];
-                        RateofExchange = k[1].Split()[2].Split('/')[0];
-                        _Amount = s[1].Split()[2];
-                    }
-                    else
-                    {
-                        _Amount = value;
-                    }
+                    var s = value.ToString().Split('=');
+                    var k = s[0].Split('@');
+                    ForexAmount = k[0];
+                    RateofExchange = k[1].Split()[2];
+                    _Amount = s[1].Split()[2];
                 }
                 else
                 {
@@ -398,20 +391,13 @@ namespace TallyConnector.Models
             }
             set
             {
-                if (value != null)
+                if (value.ToString().Contains("="))
                 {
-                    if (value.ToString().Contains("="))
-                    {
-                        var s = value.ToString().Split('=');
-                        var k = s[0].Split('@');
-                        ForexAmount = k[0];
-                        RateofExchange = k[1].Split()[2].Split('/')[0];
-                        _Amount = s[1].Split()[2];
-                    }
-                    else
-                    {
-                        _Amount = value;
-                    }
+                    var s = value.ToString().Split('=');
+                    var k = s[0].Split('@');
+                    ForexAmount = k[0];
+                    RateofExchange = k[1].Split()[2];
+                    _Amount = s[1].Split()[2];
                 }
                 else
                 {
@@ -486,20 +472,13 @@ namespace TallyConnector.Models
             }
             set
             {
-                if (value != null)
+                if (value.ToString().Contains("="))
                 {
-                    if (value.ToString().Contains("="))
-                    {
-                        var s = value.ToString().Split('=');
-                        var k = s[0].Split('@');
-                        ForexAmount = k[0];
-                        RateofExchange = k[1].Split()[2].Split('/')[0];
-                        _Amount = s[1].Split()[2];
-                    }
-                    else
-                    {
-                        _Amount = value;
-                    }
+                    var s = value.ToString().Split('=');
+                    var k = s[0].Split('@');
+                    ForexAmount = k[0];
+                    RateofExchange = k[1].Split()[2];
+                    _Amount = s[1].Split()[2];
                 }
                 else
                 {
@@ -556,20 +535,13 @@ namespace TallyConnector.Models
             }
             set
             {
-                if (value != null)
+                if (value.ToString().Contains("="))
                 {
-                    if (value.ToString().Contains("="))
-                    {
-                        var s = value.ToString().Split('=');
-                        var k = s[0].Split('@');
-                        ForexAmount = k[0];
-                        RateofExchange = k[1].Split()[2].Split('/')[0];
-                        _Amount = s[1].Split()[2];
-                    }
-                    else
-                    {
-                        _Amount = value;
-                    }
+                    var s = value.ToString().Split('=');
+                    var k = s[0].Split('@');
+                    ForexAmount = k[0];
+                    RateofExchange = k[1].Split()[2];
+                    _Amount = s[1].Split()[2];
                 }
                 else
                 {
