@@ -218,11 +218,10 @@ namespace TallyConnector
             Units = GetObjfromXml<UnitsList>(UnitsXml).Units;
 
             //Gets Currencies from Tally
-<<<<<<< HEAD
-            Dictionary<string, string> Currenciesfields = new() { { "$EXPANDEDSYMBOL", "NAME" } };
-=======
-            Dictionary<string, string> Currenciesfields = new Dictionary<string, string>() { { "NAME", "NAME" } };
->>>>>>> Downgraded c# to 7.3
+
+
+            Dictionary<string, string> Currenciesfields = new Dictionary<string, string>() { { "$EXPANDEDSYMBOL", "NAME" } };
+
             string CurrenciesXml = await GetCustomCollectionXML("List Of Currencies", Currenciesfields, "Currencies", staticVariables);
             Currencies = GetObjfromXml<CurrenciesList>(CurrenciesXml).Currencies;
 
@@ -336,9 +335,9 @@ namespace TallyConnector
                                             List<string> fetchList = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
             fetchList = new List<string>() { "Address", "InterestCollection", "*" };
             Ledger ledger = (await GetObjFromTally<LedgerEnvelope>(ObjName: ledgerName,
                                                                    ObjType: "Ledger",
@@ -1113,7 +1112,7 @@ namespace TallyConnector
             company = company ?? Company;
             fromDate = fromDate ?? FromDate;
             toDate = toDate ?? ToDate;
-            T Obj;
+            T Obj = default;
             try
             {
                 string ReqXml = GetObjXML(objType: ObjType,
@@ -1128,7 +1127,7 @@ namespace TallyConnector
             }
             catch (Exception e)
             {
-                throw;
+               // throw;
             }
             return Obj;
         }
@@ -1411,13 +1410,37 @@ namespace TallyConnector
                 if (Resp.Body.Data.LineError != null)
                 {
                     result.Status = RespStatus.Failure;
-
+                    result.Result = Resp.Body.Data.LineError;
 
                 }
-                if (Resp.Body.Data.ImportResult.LastVchId != null)
+                else if(Resp.Body.Data.ImportResult != null)
                 {
-                    result.Status = RespStatus.Sucess;
-                    result.Result = Resp.Body.Data.ImportResult.LastVchId.ToString(); //Returns VoucherMaster ID
+                    if (Resp.Body.Data.ImportResult.Created !=0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = Resp.Body.Data.ImportResult.LastVchId == 0 ? "Created Succesfully" : $"Voucher Created Sucessfully - {Resp.Body.Data.ImportResult.LastVchId}";
+                         
+                    }
+                    else if(Resp.Body.Data.ImportResult.Altered !=0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Altered Succesfully";
+                    }
+                    else if (Resp.Body.Data.ImportResult.Deleted != 0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Deleted Succesfully";
+                    }
+                    else if (Resp.Body.Data.ImportResult.Combined != 0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Combined Succesfully";
+                    }
+                    else
+                    {
+
+                    }
+                    
                 }
 
             }
