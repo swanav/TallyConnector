@@ -1246,16 +1246,16 @@ namespace TallyConnector
             await Check();
             if (Status == "Running")
             {
-                Models.CusColEnvelope ColEnvelope = new(); //Collection Envelope
+                Models.CusColEnvelope ColEnvelope = new CusColEnvelope(); //Collection Envelope
                 string RName = rName;
 
-                ColEnvelope.Header = new("Export", "Collection", RName);  //Configuring Header To get Export data
+                ColEnvelope.Header = new Header("Export", "Collection", RName);  //Configuring Header To get Export data
                 if (Sv != null)
                 {
                     ColEnvelope.Body.Desc.StaticVariables = Sv;
                 }
 
-                ColEnvelope.Body.Desc.TDL.TDLMessage = new(colName: RName, colType: colType, nativeFields: NativeFields, Filters, SystemFilters);
+                ColEnvelope.Body.Desc.TDL.TDLMessage = new ColTDLMessage(colName: RName, colType: colType, nativeFields: NativeFields, Filters, SystemFilters);
                 //ColEnvelope.Body.Desc.TDL.TDLMessage.Collection.SetAttributes(isInitialize: "Yes");
 
                 string Reqxml = ColEnvelope.GetXML(); //Gets XML from Object
