@@ -180,24 +180,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public EmployeeBody Body { get; set; } = new();
+        public EmployeeBody Body { get; set; } = new EmployeeBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class EmployeeBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public EmployeeData Data { get; set; } = new();
+        public EmployeeData Data { get; set; } = new EmployeeData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class EmployeeData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public EmployeeMessage Message { get; set; } = new();
+        public EmployeeMessage Message { get; set; } = new EmployeeMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]

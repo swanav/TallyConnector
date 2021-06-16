@@ -81,17 +81,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\Attendance.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\CostCategory.cs" />
     <Compile Include="Models\CostCenter.cs" />
-    <Compile Include="Models\Currencies.cs" />
+    <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\CusCollection.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeGroup.cs" />
     <Compile Include="Models\Envelope.cs" />
     <Compile Include="Models\Godown.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Ledger.cs" />
     <Compile Include="Models\Names.cs" />
     <Compile Include="Models\ObjEnv.cs" />
+    <Compile Include="Models\PaymentDetails.cs" />
     <Compile Include="Models\StockCategory.cs" />
     <Compile Include="Models\StockGroup.cs" />
     <Compile Include="Models\StockItem.cs" />

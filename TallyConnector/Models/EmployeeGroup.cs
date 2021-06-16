@@ -27,24 +27,24 @@ namespace TallyConnector.Models
         public Header Header { get; set; }
 
         [XmlElement(ElementName = "BODY")]
-        public EmployeeGroupBody Body { get; set; } = new();
+        public EmployeeGroupBody Body { get; set; } = new EmployeeGroupBody();
     }
 
     [XmlRoot(ElementName = "BODY")]
     public class EmployeeGroupBody
     {
         [XmlElement(ElementName = "DESC")]
-        public Description Desc { get; set; } = new();
+        public Description Desc { get; set; } = new Description();
 
         [XmlElement(ElementName = "DATA")]
-        public EmployeeGroupData Data { get; set; } = new();
+        public EmployeeGroupData Data { get; set; } = new EmployeeGroupData();
     }
 
     [XmlRoot(ElementName = "DATA")]
     public class EmployeeGroupData
     {
         [XmlElement(ElementName = "TALLYMESSAGE")]
-        public EmployeeGroupMessage Message { get; set; } = new();
+        public EmployeeGroupMessage Message { get; set; } = new EmployeeGroupMessage();
     }
 
     [XmlRoot(ElementName = "TALLYMESSAGE")]

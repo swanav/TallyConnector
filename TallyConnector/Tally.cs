@@ -240,11 +240,10 @@ namespace TallyConnector
             Units = GetObjfromXml<UnitsList>(UnitsXml).Units;
 
             //Gets Currencies from Tally
-<<<<<<< HEAD
-            Dictionary<string, string> Currenciesfields = new() { { "$EXPANDEDSYMBOL", "NAME" } };
-=======
-            Dictionary<string, string> Currenciesfields = new Dictionary<string, string>() { { "NAME", "NAME" } };
->>>>>>> Downgraded c# to 7.3
+
+
+            Dictionary<string, string> Currenciesfields = new Dictionary<string, string>() { { "$EXPANDEDSYMBOL", "NAME" } };
+
             string CurrenciesXml = await GetCustomCollectionXML("List Of Currencies", Currenciesfields, "Currencies", staticVariables);
             Currencies = GetObjfromXml<CurrenciesList>(CurrenciesXml).Currencies;
 
@@ -1051,9 +1050,9 @@ namespace TallyConnector
                                                     string format = "XML")
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
 
             EmployeeGroup EmpGrp = (await GetObjFromTally<EmployeeGroupEnvelope>(ObjName: EmployeeGroupName,
                                                                              ObjType: "CostCenter",
@@ -1080,11 +1079,11 @@ namespace TallyConnector
                                       string company = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
+            company = company ?? Company;
 
-            EmployeeGroupEnvelope EmployeeGroupEnvelope = new();
-            EmployeeGroupEnvelope.Header = new(Request: "Import", Type: "Data", ID: "All Masters");
-            EmployeeGroupEnvelope.Body.Desc.StaticVariables = new() { SVCompany = company };
+            EmployeeGroupEnvelope EmployeeGroupEnvelope = new EmployeeGroupEnvelope();
+            EmployeeGroupEnvelope.Header = new Header(Request: "Import", Type: "Data", ID: "All Masters");
+            EmployeeGroupEnvelope.Body.Desc.StaticVariables = new StaticVariables() { SVCompany = company };
 
             EmployeeGroupEnvelope.Body.Data.Message.EmployeeGroup = EmployeeGroup;
 
@@ -1116,10 +1115,10 @@ namespace TallyConnector
                                                     string format = "XML")
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
-            fetchList = new() { "TaxRegimeDetails","*" };
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
+            fetchList = new List<string>() { "TaxRegimeDetails","*" };
             Employee Employee = (await GetObjFromTally<EmployeeEnvelope>(ObjName: EmployeeName,
                                                                              ObjType: "CostCenter",
                                                                              company: company,
@@ -1145,11 +1144,11 @@ namespace TallyConnector
                                       string company = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
+            company = company ?? Company;
 
-            EmployeeEnvelope EmployeeEnvelope = new();
-            EmployeeEnvelope.Header = new(Request: "Import", Type: "Data", ID: "All Masters");
-            EmployeeEnvelope.Body.Desc.StaticVariables = new() { SVCompany = company };
+            EmployeeEnvelope EmployeeEnvelope = new EmployeeEnvelope();
+            EmployeeEnvelope.Header = new Header(Request: "Import", Type: "Data", ID: "All Masters");
+            EmployeeEnvelope.Body.Desc.StaticVariables = new StaticVariables() { SVCompany = company };
 
             EmployeeEnvelope.Body.Data.Message.Employee = Employee;
 
@@ -1303,11 +1302,11 @@ namespace TallyConnector
                                             List<string> SystemFilter = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
-            Nativelist = Nativelist == null?new() { "*" }: Nativelist;
-            StaticVariables sv = new() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
+            Nativelist = Nativelist == null? new List<string>() { "*" }: Nativelist;
+            StaticVariables sv = new StaticVariables() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
 
             string xml = await GetNativeCollectionXML(rName: "Vouchers", colType: "Vouchers : Ledger", Sv: sv,childof:ledgerName,
                                                       NativeFields: Nativelist,Filters:Filters,SystemFilters:SystemFilter);
@@ -1337,11 +1336,11 @@ namespace TallyConnector
                                             List<string> SystemFilter = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
-            Nativelist = Nativelist == null?new() { "*" }: Nativelist;
-            StaticVariables sv = new() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
+            Nativelist = Nativelist == null?new List<string>()  { "*" }: Nativelist;
+            StaticVariables sv = new StaticVariables() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
 
             string xml = await GetNativeCollectionXML(rName: "Vouchers", colType: "Vouchers : Group", Sv: sv,childof: GroupName,
                                                       NativeFields: Nativelist, Filters: Filters, SystemFilters: SystemFilter);
@@ -1417,7 +1416,7 @@ namespace TallyConnector
             company = company ?? Company;
             fromDate = fromDate ?? FromDate;
             toDate = toDate ?? ToDate;
-            T Obj;
+            T Obj = default;
             try
             {
                 string ReqXml = GetObjXML(objType: ObjType,
@@ -1432,7 +1431,7 @@ namespace TallyConnector
             }
             catch (Exception e)
             {
-                throw;
+               // throw;
             }
             return Obj;
         }
@@ -1553,16 +1552,16 @@ namespace TallyConnector
             await Check();
             if (Status == "Running")
             {
-                Models.CusColEnvelope ColEnvelope = new(); //Collection Envelope
+                Models.CusColEnvelope ColEnvelope = new CusColEnvelope(); //Collection Envelope
                 string RName = rName;
 
-                ColEnvelope.Header = new("Export", "Collection", RName);  //Configuring Header To get Export data
+                ColEnvelope.Header = new Header("Export", "Collection", RName);  //Configuring Header To get Export data
                 if (Sv != null)
                 {
                     ColEnvelope.Body.Desc.StaticVariables = Sv;
                 }
 
-                ColEnvelope.Body.Desc.TDL.TDLMessage = new(colName: RName, colType: colType, nativeFields: NativeFields, Filters, SystemFilters);
+                ColEnvelope.Body.Desc.TDL.TDLMessage = new ColTDLMessage(colName: RName, colType: colType, nativeFields: NativeFields, Filters, SystemFilters);
                 ColEnvelope.Body.Desc.TDL.TDLMessage.Collection.Childof = childof;
                 if (isInitialize)
                 {
@@ -1686,7 +1685,7 @@ namespace TallyConnector
         {
             string re = @"[^\x09\x0A\x0D\x20-\xD7FF\xE000-\xFFFD\x10000-x10FFFF]";
             Xml = System.Text.RegularExpressions.Regex.Replace(Xml, re, "");
-            XmlSerializer XMLSer = new(typeof(T));
+            XmlSerializer XMLSer = new XmlSerializer(typeof(T));
 
             NameTable nt = new NameTable();
             XmlNamespaceManager nsmgr = new XmlNamespaceManager(nt);
@@ -1728,13 +1727,37 @@ namespace TallyConnector
                 if (Resp.Body.Data.LineError != null)
                 {
                     result.Status = RespStatus.Failure;
-
+                    result.Result = Resp.Body.Data.LineError;
 
                 }
-                if (Resp.Body.Data.ImportResult.LastVchId != null)
+                else if(Resp.Body.Data.ImportResult != null)
                 {
-                    result.Status = RespStatus.Sucess;
-                    result.Result = Resp.Body.Data.ImportResult.LastVchId.ToString(); //Returns VoucherMaster ID
+                    if (Resp.Body.Data.ImportResult.Created !=0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = Resp.Body.Data.ImportResult.LastVchId == 0 ? "Created Succesfully" : $"Voucher Created Sucessfully - {Resp.Body.Data.ImportResult.LastVchId}";
+                         
+                    }
+                    else if(Resp.Body.Data.ImportResult.Altered !=0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Altered Succesfully";
+                    }
+                    else if (Resp.Body.Data.ImportResult.Deleted != 0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Deleted Succesfully";
+                    }
+                    else if (Resp.Body.Data.ImportResult.Combined != 0)
+                    {
+                        result.Status = RespStatus.Sucess;
+                        result.Result = "Combined Succesfully";
+                    }
+                    else
+                    {
+
+                    }
+                    
                 }
 
             }
