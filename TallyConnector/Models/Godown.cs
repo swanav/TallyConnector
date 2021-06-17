@@ -14,7 +14,7 @@ namespace TallyConnector.Models
 
         public Godown()
         {
-            FAddress = new();
+            FAddress = new HAddress();
         }
 
         [XmlAttribute(AttributeName = "ID")]
