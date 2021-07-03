@@ -349,11 +349,11 @@ namespace TallyConnector
                                             List<string> Nativelist = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            Nativelist ??= new() { "Address", "InterestCollection", "*" };
-            StaticVariables sv = new() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
-            List<string> Filters = new() { "Ledgerfilter" };
-            List<string> SystemFilter = new() { $"$Name = \"{ledgerName}\"" };
+            Company = company ?? Company;
+            Nativelist = Nativelist ?? new List<string>() { "Address", "InterestCollection", "*" };
+            StaticVariables sv = new StaticVariables() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
+            List<string> Filters = new List<string>() { "Ledgerfilter" };
+            List<string> SystemFilter = new List<string>() { $"$Name = \"{ledgerName}\"" };
 
             string xml = await GetNativeCollectionXML(rName: "Ledgers",
                                                       colType: "Ledger",
