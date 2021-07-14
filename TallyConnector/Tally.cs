@@ -1370,11 +1370,11 @@ namespace TallyConnector
                                             List<string> SystemFilter = null)
         {
             //If parameter is null Get value from instance
-            company ??= Company;
-            fromDate ??= FromDate;
-            toDate ??= ToDate;
-            Nativelist = Nativelist == null ? new() { "*" } : Nativelist;
-            StaticVariables sv = new() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
+            company = company ?? Company;
+            fromDate = fromDate ?? FromDate;
+            toDate = toDate ?? ToDate;
+            Nativelist = Nativelist == null ? new List<string>() { "*" } : Nativelist;
+            StaticVariables sv = new StaticVariables() { SVCompany = company,SVFromDate=fromDate,SVToDate=toDate };
 
             string xml = await GetNativeCollectionXML(rName: "Vouchers", colType: "Vouchers : Stockitem", Sv: sv,childof: ItemName,
                                                       NativeFields: Nativelist, Filters: Filters, SystemFilters: SystemFilter);
